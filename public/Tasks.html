@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Tasks.css">
+</head>
+
+<body>
+    <h1>Tasks</h1>
+    <form action="/saveC" method="POST">
+        <table class="tasks-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Task</th>
+                    <th>Assigned To</th>
+                    <th>Due Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="tasksBody">
+                <!-- Table rows will be dynamically inserted here -->
+            </tbody>
+
+        </table>
+    </form>
+    <a href="add_Tasks.html"><button class="add-project-btn">Add Project</button></a>
+    <script>
+        async function fetchTasks() {
+            const response = await fetch('/tasks');
+            const task = await response.json();
+            const tableBody = document.getElementById('tasksBody');
+            tableBody.innerHTML = ''; // Clear existing rows
+            task.forEach(task => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                <td><input type="text" id="myInput" name="id" value="${task.id}" style="height:20px;width:calc(100%)"></td>
+                <td><input type="text" id="myInput" name="task" value="${task.task}" style="height:20px;width:calc(100%)"></td>
+                <td><input type="text" id="myInput" name="assigned_to" value="${task.assigned_to}" style="height:20px;width:calc(100%)"></td>
+                <td><input type="text" id="myInput" name="due_date" value="${task.due_date}" style="height:20px;width:calc(100%)"></td>
+                <td><input type="submit" class="edit-btn" value="Save Changes">
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        window.addEventListener('load', fetchTasks);
+    </script>
+</body>
+
+</html>

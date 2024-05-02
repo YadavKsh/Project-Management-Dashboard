@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="Projects.css">
+</head>
+
+<body>
+    <div id="container">
+
+    </div>
+    <a href="add_Project.html"><button class="add-project-btn">Add Project</button></a>
+    <script>
+        async function fetchProjects() {
+            const response = await fetch('/projects');
+            const projects = await response.json();
+            const container = document.getElementById('container');
+            container.innerHTML = ''; // Clear existing content
+            projects.forEach(project => {
+                const div = document.createElement('div');
+                div.classList.add('project');
+                const heading = document.createElement('h2');
+                const lineBreak = document.createElement('br');
+                heading.textContent = project.project_name;
+                const p1 = document.createElement('p');
+                p1.classList.add('a');
+                p1.textContent = project.deadline;
+                const p2 = document.createElement('p');
+                p2.textContent = project.description;
+                div.appendChild(heading);
+                div.appendChild(p1);
+                div.appendChild(lineBreak);
+                div.appendChild(p2);
+                container.appendChild(div);
+            });
+        }
+
+        window.addEventListener('load', fetchProjects);
+    </script>
+</body>
+
+</html>

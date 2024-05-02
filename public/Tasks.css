@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Roboto:wght@400;700&display=swap');
+
+body {
+    background-image: url(tasks.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    text-decoration: underline;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgb(211, 0, 84);
+}
+
+table {
+    font-family: 'Poppins', monospace;
+}
+
+th {
+    width: calc(100%/5);
+    font-size: 1.5rem;
+}
+
+td {
+    width: calc(100%/5);
+    font-size: 1.5rem;
+}
+
+.tasks-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tasks-table th,
+.tasks-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.tasks-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.tasks-table tr {
+    background-color: #f2f2f2;
+}
+
+.tasks-table .edit-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: 100px;
+}
+
+.tasks-table .edit-btn:hover {
+    background-color: #45a049;
+}
+
+button {
+    margin-left: 45%;
+    margin-top: 10px;
+    border-radius: 3%;
+    height: 30px;
+    width: 100px;
+}

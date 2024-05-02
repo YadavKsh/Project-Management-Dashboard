@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Sign Up</h2>
+        <p class="signup-header">It just takes 30 seconds</p>
+        <form action="/signup" method="POST" onsubmit="return validateForm()">
+            <input type="text" id="username" name="username" placeholder="Username">
+            <br><span id="user1"></span><br>
+            <br><input type="password" id="password" name="password" placeholder="Password"
+                onkeyup="checkPasswordStrength()">
+            <span id="pass1"></span><br>
+            <br><div id="password-strength-meter">
+                <div id="strength-bar"></div>
+            </div><br>
+            <span id="strength"></span><br>
+            <br><input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
+            <br><span id="pass2"></span><br>
+            <br><input type="submit" value="Sign Up">
+        </form>
+        <footer class="signup-footer">
+            <p>Already have an Account?<a href="login.html">LogIn</a></p>
+        </footer>
+    </div>
+    <script>
+        function validateForm() {
+            var a = document.getElementById('username').value;
+            if (a == "") {
+                document.getElementById('user1').innerHTML = "It should not be empty";
+                return false;
+            }
+            if (a.length < 5) {
+                document.getElementById('user1').innerHTML = "Its length should not be less than 5";
+                return false;
+            }
+            if (!isNaN(a)) {
+                document.getElementById('user1').innerHTML = "It should not be a number";
+                return false;
+            }
+
+            var c = document.getElementById('password').value;
+            const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\-+.]).{6,20}$/;
+            if (regex.test(c)) {
+                document.getElementById('pass1').innerHTML = "";
+            }
+            else {
+                document.getElementById('pass1').innerHTML = "Invalid Password";
+                return false;
+            }
+
+            var c1 = document.getElementById('confirm_password').value;
+            if (c1 == c) {
+                document.getElementById('pass2').innerHTML = "";
+            }
+            else {
+                document.getElementById('pass2').innerHTML = "Password doesn't match";
+                return false;
+            }
+            return true;
+        }
+        function checkPasswordStrength() {
+            var password = document.getElementById("password").value;
+            var strengthBar = document.getElementById("strength-bar");
+            var strength = 0;
+
+            if (password.match(/[a-z]+/)) {
+                strength += 1;
+            }
+            if (password.match(/[A-Z]+/)) {
+                strength += 1;
+            }
+            if (password.match(/[0-9]+/)) {
+                strength += 1;
+            }
+            if (password.length >= 8) {
+                strength += 1;
+            }
+
+            switch (strength) {
+                case 0:
+                    strengthBar.style.width = "0%";
+                    strengthBar.style.backgroundColor="red";
+                    document.getElementById('strength').innerHTML = "0%";
+                    break;
+                case 1:
+                    strengthBar.style.width = "25%";
+                    strengthBar.style.backgroundColor="red";
+                    document.getElementById('strength').innerHTML = "25%";
+                    break;
+                case 2:
+                    strengthBar.style.width = "50%";
+                    strengthBar.style.backgroundColor="yellow";
+                    document.getElementById('strength').innerHTML = "50%";
+                    break;
+                case 3:
+                    strengthBar.style.width = "75%";
+                    strengthBar.style.backgroundColor="green";
+                    document.getElementById('strength').innerHTML = "75%";
+                    break;
+                case 4:
+                    strengthBar.style.width = "100%";
+                    strengthBar.style.backgroundColor="green";
+                    document.getElementById('strength').innerHTML = "100%";
+                    break;
+            }
+        }
+    </script>
+</body>
+
+</html>

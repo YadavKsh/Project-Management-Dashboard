@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Teams.css">
+</head>
+
+<body>
+    <h1>Teams</h1>
+
+    <table id="teams-table">
+        <thead>
+            <tr>
+                <th>Team</th>
+                <th>Members</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Design Team</td>
+                <td>John Doe, Jane Smith, Jim Brown</td>
+                <td>
+                    <button class="edit-btn" onclick="editTeam(this)">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Development Team</td>
+                <td>Jim Brown, Jane Smith, John Doe</td>
+                <td>
+                    <button class="edit-btn" onclick="editTeam(this)">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br><br>
+    <!-- <button id="new-team-btn">New Team</button> -->
+
+    <!-- Modal for creating new teams -->
+    <div id="new-team-modal" class="modal">
+        <!-- Modal content goes here -->
+    </div>
+
+    <script>
+        function editTeam(button) {
+            var row = button.parentNode.parentNode;
+            var teamName = row.cells[0].innerText;
+            var members = row.cells[1].innerText;
+
+            // Display modal
+            var modal = document.getElementById("new-team-modal");
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Edit Team</h2>
+                    <label for="edit-team-name">Team Name:</label>
+                    <input type="text" id="edit-team-name" value="${teamName}"><br>
+                    <label for="edit-members">Members:</label>
+                    <input type="text" id="edit-members" value="${members}"><br>
+                    <button onclick="saveChanges('${row.rowIndex}')">Save Changes</button>
+                </div>
+            `;
+
+            modal.style.display = "block";
+
+            // Close modal when close button is clicked
+            var closeBtn = document.querySelector(".close");
+            closeBtn.onclick = function () {
+                modal.style.display = "none";
+            };
+
+            // Close modal when clicking outside the modal
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
+        }
+
+        function saveChanges(rowIndex) {
+            var modal = document.getElementById("new-team-modal");
+            var row = document.getElementById("teams-table").rows[rowIndex];
+            var teamNameInput = document.getElementById("edit-team-name");
+            var membersInput = document.getElementById("edit-members");
+
+            // Update table row with edited values
+            row.cells[0].innerText = teamNameInput.value;
+            row.cells[1].innerText = membersInput.value;
+
+            // Close modal
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

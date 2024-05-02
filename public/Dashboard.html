@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management Dashboard</title>
+    <link rel="stylesheet" href="Dashboard.css">
+    <script src="Logout.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Project Management Dashboard</h1>
+        <div>Welcome, User</div><br>
+        <a href="/logout" class="logout-button">Logout</a>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="Projects.html">Projects</a></li>
+            <li><a href="Tasks.html">Tasks</a></li>
+            <li><a href="Teams.html">Team</a></li>
+            <li><a href="Notes.html">Notes</a></li>
+        </ul>
+    </nav>
+    <div class="big-div">
+        <div class="recent-activity">
+            <h2>Recent Activity</h2>
+            <ul>
+                <li><span class="activity-time">10:00 AM</span> Task "Review project plan" updated by Jane Smith</li>
+                <li><span class="activity-time">9:30 AM</span> Task "Create project plan" completed by John Doe</li>
+                <li><span class="activity-time">9:00 AM</span> New task "Design UI prototype" assigned to Jim Brown</li>
+            </ul>
+        </div>
+        <div class="notifications">
+            <h2>Notifications</h2>
+            <ul>
+                <li>New task assigned: "Design UI prototype" - Due date: 2024-03-14</li>
+                <li>Upcoming deadline: Task "Review project plan" due on 2024-03-07</li>
+                <li>Upcoming deadline: Task "Create project plan" due on 2024-02-28</li>
+            </ul>
+        </div>
+    </div>
+    <div class="team-overview">
+        <h2>Team Overview</h2>
+        <ul>
+            <li>Total Team Members: 10</li>
+            <li>Active Members: 8</li>
+            <li>Upcoming Events: Team Meeting (March 15)</li>
+        </ul>
+    </div>
+</body>
+
+</html>

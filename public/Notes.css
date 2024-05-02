@@ -1,0 +1,56 @@
+body{
+  background-image: url(Notes.avif);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+h1{
+  font-size: 3rem;
+  text-align: center;
+  color:burlywood;
+}
+#add-page-button{
+    height:40px;
+    width: 120px;
+    font-size: larger;
+    background-color: plum;
+}
+#add-page-button:hover{
+    transform: scale(1.3);
+    text-shadow: 2px 2px 2px rgba(56, 83, 255, 0.6);
+    box-shadow: 2px 2px 2px black;
+    transition: 0.5s ease;
+}
+#apply-css-button{
+    height:40px;
+    width: 120px;
+    font-size: larger;
+    background-color: plum;
+}
+#apply-css-button:hover{
+    transform: scale(1.3);
+    text-shadow: 2px 2px 2px rgba(56, 83, 255, 0.6);
+    box-shadow: 2px 2px 2px black;
+    transition: 0.5s ease;
+}
+#save-button{
+    height:40px;
+    width: 120px;
+    font-size: larger;
+    background-color: plum;
+}
+#save-button:hover{
+    transform: scale(1.3);
+    text-shadow: 2px 2px 2px rgba(56, 83, 255, 0.6);
+    box-shadow: 2px 2px 2px black;
+    transition: 0.5s ease;
+}
+.flex{
+  display: flex;
+  justify-content: space-around;
+}
+.page {
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}

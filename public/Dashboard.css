@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jersey+25&display=swap');
+
+body {
+    font-family: 'Bebas Neue', monospace;
+    margin: 0;
+    padding: 0;
+    background-color: skyblue;
+}
+
+header {
+    background: linear-gradient(to top, skyblue, lightgreen);
+    color: #fff;
+    text-align: center;
+    padding: 20px 0px;
+    height: 90px;
+    width: 100%;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    text-shadow: 3px 3px 3px black;
+}
+
+header div {
+    height: 30px;
+    width: 120px;
+    display: block;
+    margin-left: 2%;
+    margin-top: -80px;
+    text-decoration: underline;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: rgba(54, 57, 58);
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+    font-size: 1.2rem;
+}
+
+nav ul li:hover {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    transition: 0.3s ease;
+
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    background-color: #eee;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+    background-color: gray;
+}
+
+.big-div {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 90px;
+}
+
+.recent-activity {
+    border: 2px solid black;
+    margin-top: 40px;
+    margin-left: 10%;
+    width: 600px;
+    height: 150px;
+    overflow: scroll;
+    text-align: center;
+}
+
+.recent-activity:hover {
+    background-color: white;
+}
+
+.recent-activity h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+.recent-activity ul {
+    list-style-type: upper-roman;
+    padding: 0;
+}
+
+.recent-activity li {
+    margin-bottom: 8px;
+    font-size: large;
+}
+
+.recent-activity li:hover {
+    transform: scale(1.4);
+    transition: 0.5s ease;
+    background-color: violet;
+}
+
+.activity-time {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.notifications {
+    margin-top: 40px;
+    margin-right: 10%;
+    border: 2px solid black;
+    text-align: center;
+    width: 600px;
+    height: 150px;
+    overflow: scroll;
+}
+
+.notifications:hover {
+    background-color: white;
+}
+
+.notifications h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+.notifications ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.notifications li {
+    margin-bottom: 8px;
+    font-size: large;
+}
+
+.notifications li:hover {
+    transform: scale(1.4);
+    transition: 0.5s;
+    background-color: rgb(0, 255, 238);
+}
+
+.team-overview {
+    background-color: grey;
+    margin-top: 150px;
+    margin-left: 30%;
+    width: 608px;
+    height: 160px;
+    text-align: center;
+}
+
+.team-overview:hover {
+    background-color: lightgray;
+    box-shadow: 3px 3px 3px black;
+    transition: 0.7s ease-in;
+}
+
+.team-overview h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.team-overview ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.team-overview li {
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+}
+
+.team-overview ul:hover {
+    transform: scale(1.3);
+}
+
+section.statistics {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+}
+
+.stat-box {
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.logout-button {
+    height: 30px;
+    width: 80px;
+    display: block;
+    text-decoration: none;
+    color: black;
+    background-color: #f44336;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 7px;
+    position: fixed;
+    margin-left: 90%;
+    margin-top: -60px;
+}
+
+.logout-button:hover {
+    background-color: white;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.9);
+}

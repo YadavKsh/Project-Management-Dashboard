@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Taking Page</title>
+    <link rel="stylesheet" href="Notes.css">
+    <script src="notes.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Note Taking Page</h1>
+        <div class="flex">
+            <button id="add-page-button">Add Page</button>
+            <button id="apply-css-button">Apply CSS</button>
+            <button id="save-button">Save</button>
+        </div>
+        <br><br>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const container = document.querySelector('.container');
+            const addPageButton = document.getElementById('add-page-button');
+            const applyCssButton = document.getElementById('apply-css-button');
+            const saveButton = document.getElementById('save-button');
+
+            addPageButton.addEventListener('click', function () {
+                createPage();
+            });
+
+            applyCssButton.addEventListener('click', function () {
+                applyCssToPages();
+            });
+
+            saveButton.addEventListener('click', function () {
+                saveNotes();
+            });
+
+            function createPage() {
+                const page = document.createElement('div');
+                page.classList.add('page');
+                page.contentEditable = true;
+                page.textContent = 'START WRITING FROM HERE....';
+
+                container.appendChild(page);
+            }
+
+            function applyCssToPages() {
+                const pages = document.querySelectorAll('.page');
+
+                pages.forEach(page => {
+                    // Add or update CSS styles here
+                    page.style.backgroundColor = 'rgb(0,0,0,0.2)';
+                    page.style.border = '1px solid #ccc';
+                    page.style.marginBottom = '20px';
+                    page.style.overflow = 'auto'; // Add scroll if content exceeds page height
+                });
+            }
+            function saveNotes() {
+                const notes = [];
+                const pages = document.querySelectorAll('.page');
+
+                pages.forEach(page => {
+                    notes.push(page.innerHTML.trim());
+                });
+
+                // Send the notes to the server for saving
+                fetch('/saveNote', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ notes: notes[0] })
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Notes saved successfully!');
+                        } else {
+                            alert('Error saving notes.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error saving notes:', error);
+                        alert('Error saving notes.');
+                    });
+            }
+        });
+
+    </script>
+</body>
+
+</html>
