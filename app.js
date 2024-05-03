@@ -17,7 +17,7 @@ app.use(session({
 }));
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/signup', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://asmit16903:asmit16903@gaming.kft4tbf.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 // Check MongoDB connection
@@ -191,21 +191,21 @@ app.get('/tasks', async (req, res) => {
     }
 });
 
-app.post('/saveC', async (req, res) => {
-    const { task, assigned_to, due_date } = req.body;
-    try {
+//Team Creation
+const teamSchema = new mongoose.Schema({
+    team: String,
+    members: String,
+})
 
-        const tasks = await Task.findOne({ id })
-        if (!tasks) {
-            res.send("Task not found");
-        }
-        else {
-            tasks.assigned_to = assigned_to;
-            tasks.due_date = due_date;
-            tasks.task = task;
-            console.log(tasks)
-            // await task.save();
-        }
+const Team = mongoose.model('Team', teamSchema);
+
+app.post('/addTeam', async (req, res) => {
+    const { team,members } = req.body;
+
+    try {
+        const newTeam = new Team({ team,members });
+        await newTeam.save();
+        res.send("Team created");
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');
@@ -215,4 +215,13 @@ app.post('/saveC', async (req, res) => {
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+app.get('/teams', async (req, res) => {
+    try {
+        const teams = await Team.find();
+        res.json(teams);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal server error' });
+    }
 });
